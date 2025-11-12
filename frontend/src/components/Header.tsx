@@ -9,6 +9,7 @@ const HeaderContainer = styled.header`
   flex-direction: column;
   background-color: #ffffff;
   color: #000000;
+  
 `;
 
 const BottomRow = styled.div`

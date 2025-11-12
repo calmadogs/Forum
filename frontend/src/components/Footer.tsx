@@ -11,7 +11,7 @@ const FooterContainer = styled.footer`
   color: #000;
   background-color: #fff;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
-  margin-bottom: 2rem; /* afastar da parte de baixo */
+  margin-bottom: 2rem; 
 `;
 
 const FooterLeft = styled.div`

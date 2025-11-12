@@ -24,7 +24,7 @@ export const authenticateToken = (
       return res.sendStatus(403); // Forbidden
     }
 
-    req.user = user; // agora TypeScript aceita
+    req.user = user; 
     next(); // segue para o próximo middleware
   });
 };
