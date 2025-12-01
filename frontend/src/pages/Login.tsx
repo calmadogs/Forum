@@ -1,12 +1,12 @@
-  import React, { useState } from "react";
-  import { useNavigate } from "react-router-dom";
-  import styled from "@emotion/styled";
-  import Header from "../components/Header";
-  import Footer from "../components/Footer";
-  import { login } from "../services/api";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import styled from "@emotion/styled";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import { login } from "../services/api";
 
-  // ======= CONTAINERS GERAIS ======= //
-  const PageContainer = styled.div`
+// ======= CONTAINERS GERAIS ======= //
+const PageContainer = styled.div`
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -14,8 +14,8 @@
     background-color: #3b91cf;
   `;
 
-  // ======= SEÇÃO PRINCIPAL ======= //
-  const Content = styled.div`
+// ======= SEÇÃO PRINCIPAL ======= //
+const Content = styled.div`
     flex: 1;
     display: flex;
     justify-content: center;
@@ -24,7 +24,7 @@
     background-color: #3b91cf;
   `;
 
-  const LeftSection = styled.div`
+const LeftSection = styled.div`
     flex: 1;
     color: white;
     padding-right: 2rem;
@@ -46,7 +46,7 @@
     }
   `;
 
-  const RegisterButton = styled.button`
+const RegisterButton = styled.button`
     background-color: transparent;
     border: 2px solid white;
     color: white;
@@ -62,14 +62,14 @@
     }
   `;
 
-  const RightSection = styled.div`
+const RightSection = styled.div`
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
   `;
 
-  const LoginBox = styled.div`
+const LoginBox = styled.div`
     background-color: #fff;
     border-radius: 6px;
     padding: 1rem;
@@ -79,20 +79,21 @@
     text-align: left;
   `;
 
-  const LoginTitle = styled.h2`
+const LoginTitle = styled.h2`
     font-size: 1rem;
     font-weight: 600;
     margin-bottom: 1.2rem;
     color: #333;
   `;
 
-  const Input = styled.input`
+const Input = styled.input`
     width: 91%;
     padding: 0.7rem 0.9rem;
     margin-bottom: 1rem;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 0.95rem;
+    background: white;
 
     &:focus {
       outline: none;
@@ -100,7 +101,7 @@
     }
   `;
 
-  const OptionsRow = styled.div`
+const OptionsRow = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -108,7 +109,7 @@
     font-size: 0.85rem;
   `;
 
-  const RememberMe = styled.label`
+const RememberMe = styled.label`
     display: flex;
     align-items: center;
     gap: 0.3rem;
@@ -120,7 +121,7 @@
     }
   `;
 
-  const ForgotPassword = styled.a`
+const ForgotPassword = styled.a`
     color: #007bff;
     text-decoration: none;
     cursor: pointer;
@@ -130,7 +131,7 @@
     }
   `;
 
-  const LoginButton = styled.button`
+const LoginButton = styled.button`
     width: 100%;
     background-color: #009739;
     color: white;
@@ -147,7 +148,7 @@
     }
   `;
 
-  const Divider = styled.div`
+const Divider = styled.div`
     display: flex;
     align-items: center;
     text-align: center;
@@ -174,7 +175,7 @@
     }
   `;
 
-  const SocialButton = styled.button<{ bg: string }>`
+const SocialButton = styled.button<{ bg: string }>`
     width: 100%;
     padding: 0.8rem;
     border: none;
@@ -186,7 +187,7 @@
     background-color: ${(props) => props.bg};
   `;
 
-  const FooterText = styled.p`
+const FooterText = styled.p`
     font-size: 0.85rem;
     color: #666;
     margin-top: 1rem;
@@ -203,88 +204,84 @@
     }
   `;
 
-  export default function LoginPage() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
-    const navigate = useNavigate();
+export default function LoginPage() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-    const handleLogin = async (e: React.FormEvent) => {
-      e.preventDefault();
-      setError(""); // limpa erro anterior
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError(""); // limpa erro anterior
 
-      try {
-        const data = await login(email, password); // token salvo no localStorage
-        console.log("Token JWT:", data.token);
-        navigate("/"); // redireciona para Home
-      } catch (err) {
-        console.error(err);
-        setError("E-mail ou senha incorretos");
-      }
-    };
+    try {
+      const data = await login(email, password); // token salvo no localStorage
+      console.log("Token JWT:", data.token);
+      navigate("/"); // redireciona para Home
+    } catch (err) {
+      console.error(err);
+      setError("E-mail ou senha incorretos");
+    }
+  };
 
-    return (
-      <PageContainer>
-        <Header />
+  return (
+    <PageContainer>
+      <Header />
 
-        <Content>
-          <LeftSection>
-            <h1>Faça parte deste movimento e ajude a mudar o Brasil!</h1>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-              commodo justo ac nisi pretium, a egestas lorem elementum.
-            </p>
-            <RegisterButton>Registre-se Agora!</RegisterButton>
-          </LeftSection>
+      <Content>
+        <LeftSection>
+          <h1>Faça parte deste movimento e ajude a mudar o Brasil!</h1>
+          <RegisterButton>Registre-se Agora!</RegisterButton>
+        </LeftSection>
 
-          <RightSection>
-            <LoginBox>
-              <LoginTitle>Faça seu Login</LoginTitle>
-              <form onSubmit={handleLogin}>
-                <Input
-                  type="email"
-                  placeholder="E-mail"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <Input
-                  type="password"
-                  placeholder="Senha"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
+        <RightSection>
+          <LoginBox>
+            <LoginTitle>Faça seu Login</LoginTitle>
+            <form onSubmit={handleLogin}>
+              <Input
+                type="email"
+                placeholder="E-mail"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <Input
+                type="password"
+                placeholder="Senha"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
 
-                <OptionsRow>
-                  <RememberMe>
-                    {/* TODO: implementar funcionalidade "Lembrar meus dados" */}
-                    <input type="checkbox" />
-                    Lembrar meus dados
-                  </RememberMe>
+              <OptionsRow>
+                <RememberMe>
+                  {/* TODO: implementar funcionalidade "Lembrar meus dados" */}
+                  <input type="checkbox" checked />
+                  Lembrar meus dados
+                </RememberMe>
 
-                  <ForgotPassword href="#">Esqueci minha senha</ForgotPassword>
-                </OptionsRow>
+                <ForgotPassword href="#">Esqueci minha senha</ForgotPassword>
+              </OptionsRow>
 
-                <LoginButton type="submit">Login</LoginButton>
-              </form>
+              <LoginButton type="submit">Login</LoginButton>
+            </form>
 
-              {error && <p style={{ color: "red" }}>{error}</p>}
+            {error && <p style={{ color: "red" }}>{error}</p>}
 
-              <Divider>
-                <span>ou</span>
-              </Divider>
+            <Divider>
+              <span>ou</span>
+            </Divider>
 
-              <SocialButton bg="#3b5998">Login com Facebook</SocialButton>
-              <SocialButton bg="#1da1f2">Login com Twitter</SocialButton>
+            <SocialButton bg="#3b5998">Login com Facebook</SocialButton>
+            <SocialButton bg="#1da1f2">Login com Twitter</SocialButton>
 
-              <FooterText>
-                Você não tem uma conta?<a href="#">Registre-se agora!</a> <br />É
-                muito simples e você pode ajudar a mudar o Brasil
-              </FooterText>
-            </LoginBox>
-          </RightSection>
-        </Content>
+            <FooterText>
+              Ainda não tem uma conta?<a href="#">{" "}Registre-se agora!</a> <br />É
+              muito simples e você pode ajudar a mudar o Brasil
+            </FooterText>
+          </LoginBox>
+        </RightSection>
+      </Content>
 
-        <Footer />
-      </PageContainer>
-    );
-  }
+      <Footer />
+    </PageContainer>
+  );
+}
