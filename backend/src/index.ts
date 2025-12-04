@@ -2,6 +2,7 @@ import express, { Express } from "express";
 import cors from "cors";
 import userRoutes from "./users/user.routes"; // Import the user router
 import authRoutes from "./auth/auth.routes"; // Import the auth router
+import newsRoutes from "./news/news.routes"; // Import the news router
 import { authenticateToken } from "./auth/auth.middleware"; // 1. Import the middleware
 
 const app: Express = express();
@@ -13,6 +14,7 @@ app.use(cors());
 // Mount the user router
 app.use("/api/auth", authRoutes); // e.g., /api/auth/login
 app.use("/api/users", userRoutes);
+app.use("/api/news", newsRoutes);
 
 app.listen(PORT, () => {
   console.log(`🚀 Server is running on http://localhost:${PORT}`);
