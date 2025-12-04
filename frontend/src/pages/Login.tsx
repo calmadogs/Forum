@@ -34,7 +34,7 @@ export default function LoginPage() {
     try {
       const data = await login(email, password); // token salvo no localStorage
       console.log("Token JWT:", data.token);
-      navigate("/"); // redireciona para Home
+      navigate("/noticias"); // redireciona para Noticias
     } catch (err) {
       console.error(err);
       setError("E-mail ou senha incorretos");
