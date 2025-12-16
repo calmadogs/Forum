@@ -1,5 +1,3 @@
-// News.tsx atualizado com filtro, barra de busca centralizada e layout otimizado
-// ------------------ INÍCIO DO ARQUIVO ------------------
 
 import { useState, useEffect } from 'react';
 import ReactQuill from 'react-quill-new';

@@ -1,4 +1,3 @@
-/* ------------------ INÍCIO DO ARQUIVO News.style.ts ------------------ */
 
 import styled from '@emotion/styled';
 
