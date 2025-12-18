@@ -21,6 +21,7 @@ import {
     NewsContent,
     OpenDiscussionButton,
     DeleteNewsButton,
+    SuccessMessage,
     ModalOverlay,
     ModalContent,
     DeleteConfirmModal,
@@ -66,6 +67,7 @@ const News = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
     const [newsToDelete, setNewsToDelete] = useState<number | null>(null);
+    const [successMessage, setSuccessMessage] = useState('');
     const [title, setTitle] = useState('');
     const [tags, setTags] = useState('');
     const [content, setContent] = useState('');
@@ -137,6 +139,8 @@ const News = () => {
                 fetchNews();
                 setIsDeleteModalOpen(false);
                 setNewsToDelete(null);
+                setSuccessMessage('Notícia excluída com sucesso!');
+                setTimeout(() => setSuccessMessage(''), 3000);
             } catch (err) {
                 console.error('Erro ao excluir notícia:', err);
                 alert('Erro ao excluir notícia. Tente novamente.');
@@ -157,6 +161,12 @@ const News = () => {
     return (
         <NewsContainer>
             <Header />
+
+            {successMessage && (
+                <SuccessMessage>
+                    ✅ {successMessage}
+                </SuccessMessage>
+            )}
 
             <MainContent>
 

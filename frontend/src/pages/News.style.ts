@@ -1,6 +1,34 @@
 
 import styled from '@emotion/styled';
 
+/* ------------------- MENSAGEM DE SUCESSO ------------------- */
+export const SuccessMessage = styled.div`
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #10b981;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 500;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 3000;
+    animation: slideDown 0.3s ease-out;
+    border: 2px solid #059669;
+
+    @keyframes slideDown {
+        from {
+            transform: translateX(-50%) translateY(-100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+    }
+`;
+
 export const NewsContainer = styled.div`
     width: 100%;
     min-height: 100vh;
